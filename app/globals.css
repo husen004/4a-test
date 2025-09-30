@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+body {
+  background-color: rgba(35, 40, 41, 1);
+}
+
+.nav {
+  background-color: rgba(29, 91, 67, 1);
+}
+
+button {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: 0px;
+  vertical-align: middle;
+}
+
+.text {
+  color: rgba(255, 255, 255, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.return-text {
+  color: rgba(129, 254, 149, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: 0px;
+}
+
+p {
+  color: rgba(220, 220, 220, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: 0px;
+}
+
+h1 {
+  color: rgba(255, 255, 255, 1);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 1%;
+}
+
+.timer {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 110%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+.normal {
+  color: rgba(255, 255, 255, 1);
+}
+
+.warning {
+  color: rgba(255, 187, 0, 1);
+}
+
+.danger {
+  color: rgba(255, 78, 78, 1);
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper-narrow {
+  max-width: 768px;
+}
+
+.wrapper-wide {
+  max-width: 1440px;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.shade {
+  position: absolute;
+  background: linear-gradient(180deg, rgba(35, 40, 41, 0) 0%, #232829 100%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 81px;
+  pointer-events: none;
+}
+
+.tarrif-button {
+  background-color: rgba(253, 176, 86, 1);
+}
+
+.tarrif-text {
+  color: rgba(155, 155, 155, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+}
+
+.tarrif-text2 {
+  color: rgba(205, 205, 205, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+}
+
+.tarrif-h5 {
+  color: rgba(255, 255, 255, 1);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0px;
+}
+
+.tarrif-plan {
+  background-color: rgba(45, 50, 51, 1);
+}
+
+.tarrif-plan {
+  background-color: rgba(49, 54, 55, 1);
+}
+
+.tarrif-plan_color {
+  color: rgba(253, 176, 86, 1);
+}
+
+@keyframes priceSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes priceSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badgeFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(0) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+}
+
+.price-transition-container {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.price-slide-out {
+  animation: priceSlideOut 0.6s forwards;
+}
+
+.price-slide-in {
+  animation: priceSlideIn 0.6s forwards;
+}
+
+.badge-fade-out {
+  animation: badgeFadeOut 0.8s forwards;
+}
