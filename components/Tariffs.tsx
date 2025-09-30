@@ -46,7 +46,7 @@ export default function Tariffs() {
   };
 
   return (
-    <div className="my-8 flex justify-center items-center md:flex-row flex-col md:gap-8">
+    <div className="my-8 flex justify-center items-center md:flex-row flex-col md:gap-8 mt-22">
       <div className="my-6 relative">
         <Image src={man} alt="man" />
         <div className="shade"></div>
