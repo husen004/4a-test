@@ -7,7 +7,7 @@ import star5 from "../public/star5.svg";
 import star6 from "../public/star6.svg";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(120);
   const [isBlinking, setIsBlinking] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ export default function Timer() {
   const getColorClass = () => {
     if (timeLeft === 0) return "normal";
     if (timeLeft < 30) {
-      // When under 30 seconds, alternate between danger and warning classes
       return isBlinking ? "danger" : "warning";
     }
     return "warning";

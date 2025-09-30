@@ -58,6 +58,7 @@ export default function TariffsPrice() {
         setTariffs(sortedTariffs);
 
         const bestTariff = sortedTariffs.find((t) => t.is_best);
+
         if (bestTariff) {
           setSelectedTariff(bestTariff.id);
         } else if (sortedTariffs.length > 0) {
@@ -85,12 +86,10 @@ export default function TariffsPrice() {
     setSelectedTariff(tariffId);
   };
 
-  // Trigger animation when timer expires
   useEffect(() => {
     if (isExpired) {
       setShowAnimation(true);
 
-      // Reset animation state after animation completes
       const timer = setTimeout(() => {
         setShowAnimation(false);
       }, 700);
@@ -111,7 +110,6 @@ export default function TariffsPrice() {
 
   return (
     <div className="flex flex-col gap-6 mx-4 md:mx-0">
-      {/* First (best) tariff */}
       {tariffs.length > 0 && tariffs[0].is_best && (
         <div
           key={`${tariffs[0].id}-best`}
@@ -131,15 +129,18 @@ export default function TariffsPrice() {
               {tariffs[0].period}
             </h3>
 
-            {/* Price display with animation */}
             <div className="price-transition-container ">
               {!isExpired ? (
                 <>
                   <div className="flex flex-col">
                     <span
-                      className={`text-5xl font-bold ${isExpired ? "" : selectedTariff === tariffs[0].id ? "warning" : ""} ${
-                        showAnimation ? "price-slide-out" : ""
-                      }`}
+                      className={`text-5xl font-bold text-white ${
+                        isExpired
+                          ? ""
+                          : selectedTariff === tariffs[0].id
+                          ? "warning"
+                          : ""
+                      } ${showAnimation ? "price-slide-out" : ""}`}
                       style={{ fontFamily: "var(--font-montserrat)" }}
                     >
                       {tariffs[0].price} ₽
@@ -156,9 +157,9 @@ export default function TariffsPrice() {
                 </>
               ) : (
                 <span
-                  className={`text-5xl font-bold ${selectedTariff === tariffs[0].id ? "warning" : "text-white"} ${
-                    showAnimation ? "price-slide-in" : ""
-                  }`}
+                  className={`text-5xl font-bold ${
+                    selectedTariff === tariffs[0].id ? "warning" : "text-white"
+                  } ${showAnimation ? "price-slide-in" : ""}`}
                   style={{ fontFamily: "var(--font-montserrat)" }}
                 >
                   {tariffs[0].full_price} ₽
@@ -167,7 +168,6 @@ export default function TariffsPrice() {
             </div>
           </div>
 
-          {/* Discount badge with animation */}
           {!isExpired || showAnimation ? (
             <div
               className={`absolute top-0 right-18 md:left-10 md:right-auto bg-red-400 text-md font-bold p-2 text-white rounded-b-lg
@@ -216,15 +216,14 @@ export default function TariffsPrice() {
                   {tariff.period}
                 </h3>
 
-                {/* Updated price display with proper animation and conditional rendering */}
                 <div className="price-transition-container">
                   {!isExpired ? (
                     <>
                       <div className="flex flex-col">
                         <span
-                          className={`text-4xl font-bold ${isSelected ? "warning" : "normal"} ${
-                            showAnimation ? "price-slide-out" : ""
-                          }`}
+                          className={`text-4xl font-bold ${
+                            isSelected ? "warning" : "normal"
+                          } ${showAnimation ? "price-slide-out" : ""}`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
                         >
                           {tariff.price} ₽
@@ -241,9 +240,9 @@ export default function TariffsPrice() {
                     </>
                   ) : (
                     <span
-                      className={`text-4xl font-bold ${isSelected ? "warning" : "normal"} ${
-                        showAnimation ? "price-slide-in" : ""
-                      }`}
+                      className={`text-4xl font-bold ${
+                        isSelected ? "warning" : "normal"
+                      } ${showAnimation ? "price-slide-in" : ""}`}
                       style={{ fontFamily: "var(--font-montserrat)" }}
                     >
                       {tariff.full_price} ₽
@@ -264,13 +263,16 @@ export default function TariffsPrice() {
                 </div>
               ) : null}
 
-              <div className="text-gray-400 max-w-[200px] md:mb-2">
+              <div className="text-gray-400 max-w-[200px] md:mb-2 my-auto">
                 {tariff.text}
               </div>
             </div>
           );
         })}
       </div>
+
+      {/* Return the selectedTariff value to the parent */}
+      <input type="hidden" id="selected-tariff-value" value={selectedTariff} />
     </div>
   );
 }
