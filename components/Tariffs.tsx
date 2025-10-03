@@ -67,7 +67,7 @@ export default function Tariffs() {
           <input
             type="checkbox"
             id="terms-checkbox"
-            className={`h-6 w-8 border-2 rounded ${
+            className={`h-6 w-8 border-2 rounded mx-2 ${
               showCheckboxError ? "border-red-500 ring-2 ring-red-300" : "border-gray-400"
             } transition-colors focus:outline-none`}
             checked={isChecked}
@@ -98,13 +98,13 @@ export default function Tariffs() {
         </div>
 
         <button
-          className="cursor-pointer mr-auto tarrif-button px-26 py-4 text-xl rounded-[20px] font-bold hover:animate-pulse"
+          className="cursor-pointer mr-auto tarrif-button px-26 py-4 text-xl rounded-[20px] font-bold hover:animate-pulse mx-2"
           onClick={handleBuyClick}
         >
           Купить
         </button>
 
-        <p className="max-w-[750px] tarrif-text">
+        <p className="max-w-[750px] tarrif-text mx-2">
           Нажимая кнопку «Купить», Пользователь соглашается на разовое списание
           денежных средств для получения пожизненного доступа к приложению.
           Пользователь соглашается, что данные кредитной/дебетовой карты будут

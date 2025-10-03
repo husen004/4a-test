@@ -109,7 +109,7 @@ export default function TariffsPrice() {
   }
 
   return (
-    <div className="flex flex-col gap-6 mx-4 md:mx-0">
+    <div className="flex flex-col gap-6 mx-2 md:mx-0">
       {tariffs.length > 0 && tariffs[0].is_best && (
         <div
           key={`${tariffs[0].id}-best`}
@@ -123,7 +123,7 @@ export default function TariffsPrice() {
         >
           <div className="flex flex-col pt-4">
             <h3
-              className="text-2xl text-white font-medium mb-4 "
+              className="md:text-2xl text-xl text-white font-medium mb-4 "
               style={{ fontFamily: "var(--font-montserrat)" }}
             >
               {tariffs[0].period}
@@ -134,7 +134,7 @@ export default function TariffsPrice() {
                 <>
                   <div className="flex flex-col">
                     <span
-                      className={`text-5xl font-bold text-white ${
+                      className={`md:text-5xl text-3xl font-bold text-white ${
                         isExpired
                           ? ""
                           : selectedTariff === tariffs[0].id
@@ -157,7 +157,7 @@ export default function TariffsPrice() {
                 </>
               ) : (
                 <span
-                  className={`text-5xl font-bold ${
+                  className={`md:text-5xl text-3xl font-bold ${
                     selectedTariff === tariffs[0].id ? "warning" : "text-white"
                   } ${showAnimation ? "price-slide-in" : ""}`}
                   style={{ fontFamily: "var(--font-montserrat)" }}
@@ -210,7 +210,7 @@ export default function TariffsPrice() {
             >
               <div className="flex flex-col justify-start items-center md:items-center md:py-12 py-7">
                 <h3
-                  className="text-2xl text-white font-medium mb-2"
+                  className="md:text-2xl text-xl text-white font-medium mb-2"
                   style={{ fontFamily: "var(--font-montserrat)" }}
                 >
                   {tariff.period}
@@ -221,7 +221,7 @@ export default function TariffsPrice() {
                     <>
                       <div className="flex flex-col">
                         <span
-                          className={`text-4xl font-bold ${
+                          className={`md:text-4xl text-2xl font-bold ${
                             isSelected ? "warning" : "normal"
                           } ${showAnimation ? "price-slide-out" : ""}`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
@@ -240,7 +240,7 @@ export default function TariffsPrice() {
                     </>
                   ) : (
                     <span
-                      className={`text-4xl font-bold ${
+                      className={`md:text-4xl text-2xl font-bold ${
                         isSelected ? "warning" : "normal"
                       } ${showAnimation ? "price-slide-in" : ""}`}
                       style={{ fontFamily: "var(--font-montserrat)" }}
@@ -251,7 +251,6 @@ export default function TariffsPrice() {
                 </div>
               </div>
 
-              {/* Discount badge with animation */}
               {!isExpired || showAnimation ? (
                 <div
                   className={`absolute top-0 right-12 md:left-10 md:right-auto bg-red-400 text-md font-bold p-2 text-white rounded-b-lg
@@ -271,7 +270,6 @@ export default function TariffsPrice() {
         })}
       </div>
 
-      {/* Return the selectedTariff value to the parent */}
       <input type="hidden" id="selected-tariff-value" value={selectedTariff} />
     </div>
   );
