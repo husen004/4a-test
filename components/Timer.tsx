@@ -7,7 +7,7 @@ import star5 from "../public/star5.svg";
 import star6 from "../public/star6.svg";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(120);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [isBlinking, setIsBlinking] = useState(false);
 
   useEffect(() => {

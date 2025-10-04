@@ -109,14 +109,14 @@ export default function TariffsPrice() {
   }
 
   return (
-    <div className="flex flex-col gap-6 mx-2 md:mx-0">
+    <div className="flex flex-col gap-6 mx-4 md:mx-0">
       {tariffs.length > 0 && tariffs[0].is_best && (
         <div
           key={`${tariffs[0].id}-best`}
           className={`relative tarrif-plan rounded-[32px] p-6 flex justify-center flex-row md:items-center gap-4 cursor-pointer w-full
             ${
               selectedTariff === tariffs[0].id
-                ? "border-2 border-orange-500"
+                ? "border border-orange-500"
                 : "border border-gray-600"
             }`}
           onClick={() => handleTariffSelect(tariffs[0].id)}
@@ -132,7 +132,7 @@ export default function TariffsPrice() {
             <div className="price-transition-container ">
               {!isExpired ? (
                 <>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col mx-4">
                     <span
                       className={`md:text-5xl text-3xl font-bold text-white ${
                         isExpired
@@ -171,9 +171,8 @@ export default function TariffsPrice() {
           {!isExpired || showAnimation ? (
             <div
               className={`absolute top-0 right-18 md:left-10 md:right-auto bg-red-400 text-md font-bold p-2 text-white rounded-b-lg
-                          ${
-                            isExpired && showAnimation ? "badge-fade-out" : ""
-                          }`}
+              ${isExpired && showAnimation ? "badge-fade-out" : ""}`}
+              style={{ fontFamily: "var(--font-gilroy), sans-serif" }}
             >
               -{calculateDiscount(tariffs[0].price, tariffs[0].full_price)}%
             </div>
@@ -184,7 +183,10 @@ export default function TariffsPrice() {
           </div>
 
           <div className="text-gray-400 md:ml-6 my-auto md:flex-1 max-w-[300px]">
-            {tariffs[0].text}
+
+            <span className="hidden md:inline">{tariffs[0].text}</span>
+
+            <span className="md:hidden">Всегда быть в форме</span>
           </div>
         </div>
       )}
@@ -203,25 +205,25 @@ export default function TariffsPrice() {
               className={`transition-all duration-300 relative tarrif-plan rounded-[40px] p-3 flex md:flex-col flex-row justify-center md:gap-4 gap-20 cursor-pointer md:w-[calc(50%-0.5rem)] 
                 ${
                   isSelected
-                    ? "border-2 border-orange-500"
+                    ? "border border-orange-500"
                     : "border border-gray-600"
-                }`}
+                } md:h-[380px]`}
               onClick={() => handleTariffSelect(tariff.id)}
             >
-              <div className="flex flex-col justify-start items-center md:items-center md:py-12 py-7">
-                <h3
-                  className="md:text-2xl text-xl text-white font-medium mb-2"
-                  style={{ fontFamily: "var(--font-montserrat)" }}
-                >
-                  {tariff.period}
-                </h3>
+              <div className="flex justify-evenly w-full md:hidden p-4">
+                <div className="price-transition-container flex flex-col">
+                  <h3
+                    className="md:text-2xl text-[18px] text-white font-medium md:mb-4"
+                    style={{ fontFamily: "var(--font-montserrat)" }}
+                  >
+                    {tariff.period}
+                  </h3>
 
-                <div className="price-transition-container">
                   {!isExpired ? (
                     <>
                       <div className="flex flex-col">
                         <span
-                          className={`md:text-4xl text-2xl font-bold ${
+                          className={`md:text-4xl text-[34px] font-bold ${
                             isSelected ? "warning" : "normal"
                           } ${showAnimation ? "price-slide-out" : ""}`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
@@ -229,7 +231,7 @@ export default function TariffsPrice() {
                           {tariff.price} ₽
                         </span>
                         <span
-                          className={`text-gray-400 line-through text-lg ml-auto ${
+                          className={`text-gray-400 line-through md:text-2xl text-[16px] ml-auto ${
                             showAnimation ? "price-slide-out" : ""
                           }`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
@@ -249,6 +251,56 @@ export default function TariffsPrice() {
                     </span>
                   )}
                 </div>
+
+                <h5 className="text-gray-400 max-w-[120px] ml-4 my-auto overflow-hidden h-20">
+                  <span className="line-clamp-3">{tariff.text}</span>
+                </h5>
+              </div>
+
+              <div className="hidden md:flex md:flex-col md:items-center md:w-full md:justify-between h-full">
+                <div className="price-transition-container flex flex-col items-center md:mt-18">
+                  <h3
+                    className="md:text-2xl text-xl text-white font-medium md:mb-4"
+                    style={{ fontFamily: "var(--font-montserrat)" }}
+                  >
+                    {tariff.period}
+                  </h3>
+
+                  {!isExpired ? (
+                    <>
+                      <div className="flex flex-col items-center">
+                        <span
+                          className={`md:text-4xl text-3xl font-bold ${
+                            isSelected ? "warning" : "normal"
+                          } ${showAnimation ? "price-slide-out" : ""}`}
+                          style={{ fontFamily: "var(--font-montserrat)" }}
+                        >
+                          {tariff.price} ₽
+                        </span>
+                        <span
+                          className={`text-gray-400 line-through md:text-2xl text-[16px] ml-auto ${
+                            showAnimation ? "price-slide-out" : ""
+                          }`}
+                          style={{ fontFamily: "var(--font-montserrat)" }}
+                        >
+                          {tariff.full_price} ₽
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <span
+                      className={`md:text-4xl text-3xl font-bold ${
+                        isSelected ? "warning" : "normal"
+                      } ${showAnimation ? "price-slide-in" : ""}`}
+                      style={{ fontFamily: "var(--font-montserrat)" }}
+                    >
+                      {tariff.full_price} ₽
+                    </span>
+                  )}
+                </div>
+                <h5 className="text-gray-400 max-w-[150px] overflow-hidden md:mb-6">
+                  {tariff.text}
+                </h5>
               </div>
 
               {!isExpired || showAnimation ? (
@@ -261,10 +313,6 @@ export default function TariffsPrice() {
                   -{discountPercent}%
                 </div>
               ) : null}
-
-              <div className="text-gray-400 max-w-[200px] md:mb-2 my-auto">
-                {tariff.text}
-              </div>
             </div>
           );
         })}

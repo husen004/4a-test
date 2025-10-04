@@ -47,15 +47,19 @@ export default function Tariffs() {
 
   return (
     <div className="my-8 flex justify-center items-center md:flex-row flex-col md:gap-8 mt-22">
-      <div className="my-6 relative">
-        <Image src={man} alt="man" />
+      <div className="relative h-[423px] md:h-auto">
+        <Image
+          src={man}
+          alt="man"
+          className="w-full h-full md:h-auto object-cover md:object-contain"
+        />
         <div className="shade"></div>
       </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:ml-6">
         <TariffsPrice />
 
-        <div className="tarrif-plan rounded-[20px] flex items-start gap-4 mr-auto p-3">
+        <div className="tarrif-plan rounded-[20px] flex items-start gap-4 md:mr-auto mx-4 p-3">
           <Image src={alert1} alt="alert1" />
           <h5 className="max-w-[400px] text-[16px] text-gray-400">
             Следуя плану на 3 месяца и более, люди получают в 2 раза лучший
@@ -67,8 +71,10 @@ export default function Tariffs() {
           <input
             type="checkbox"
             id="terms-checkbox"
-            className={`h-6 w-8 border-2 rounded mx-2 ${
-              showCheckboxError ? "border-red-500 ring-2 ring-red-300" : "border-gray-400"
+            className={`h-6 w-8 border-2 rounded mx-4 ${
+              showCheckboxError
+                ? "border-red-500 ring-2 ring-red-300"
+                : "border-gray-400"
             } transition-colors focus:outline-none`}
             checked={isChecked}
             onChange={() => {
@@ -76,9 +82,11 @@ export default function Tariffs() {
               if (showCheckboxError) setShowCheckboxError(false);
             }}
           />
-          <label 
-            htmlFor="terms-checkbox" 
-            className={`tarrif-text2 ${showCheckboxError ? "text-red-500" : ""}`}
+          <label
+            htmlFor="terms-checkbox"
+            className={`tarrif-text2 ${
+              showCheckboxError ? "text-red-500" : ""
+            }`}
           >
             Я согласен с{" "}
             <span className="underline cursor-pointer">
@@ -89,7 +97,7 @@ export default function Tariffs() {
               Политикой конфиденциальности
             </span>{" "}
           </label>
-          
+
           {showCheckboxError && (
             <div className="absolute -bottom-6 left-0 text-red-500 text-sm">
               Необходимо принять условия
@@ -98,19 +106,21 @@ export default function Tariffs() {
         </div>
 
         <button
-          className="cursor-pointer mr-auto tarrif-button px-26 py-4 text-xl rounded-[20px] font-bold hover:animate-pulse mx-2"
+          className="cursor-pointer md:mr-auto tarrif-button px-26 py-4 text-xl rounded-[20px] font-bold hover:animate-pulse mx-4"
           onClick={handleBuyClick}
         >
           Купить
         </button>
 
-        <p className="max-w-[750px] tarrif-text mx-2">
-          Нажимая кнопку «Купить», Пользователь соглашается на разовое списание
-          денежных средств для получения пожизненного доступа к приложению.
-          Пользователь соглашается, что данные кредитной/дебетовой карты будут
-          сохранены для осуществления покупок дополнительных услуг сервиса в
-          случае желания пользователя.
-        </p>
+        <div className="mx-4 md:mr-auto mb-8">
+          <p className="max-w-[750px] tarrif-text">
+            Нажимая кнопку «Купить», Пользователь соглашается на разовое
+            списание денежных средств для получения пожизненного доступа к
+            приложению. Пользователь соглашается, что данные кредитной/дебетовой
+            карты будут сохранены для осуществления покупок дополнительных услуг
+            сервиса в случае желания пользователя.
+          </p>
+        </div>
       </div>
     </div>
   );

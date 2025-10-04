@@ -3,7 +3,7 @@ import React from 'react'
 export default function ReturnQuarenty() {
   return (
 
-    <div className='border-1 border-gray-600 rounded-[24px] p-4 mb-6'>
+    <div className='border-1 border-gray-600 rounded-[24px] p-4 mb-6 mx-4'>
 
         <div className='return-text border border-green-400 p-[14px] rounded-[24px] w-fit mr-auto'>
             гарантия возврата 30 дней
