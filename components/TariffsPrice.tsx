@@ -113,7 +113,7 @@ export default function TariffsPrice() {
       {tariffs.length > 0 && tariffs[0].is_best && (
         <div
           key={`${tariffs[0].id}-best`}
-          className={`relative tarrif-plan rounded-[32px] p-6 flex justify-center flex-row md:items-center gap-4 cursor-pointer w-full
+          className={`relative tarrif-plan rounded-[40px] flex justify-center flex-row md:items-center cursor-pointer w-full
             ${
               selectedTariff === tariffs[0].id
                 ? "border border-orange-500"
@@ -121,20 +121,20 @@ export default function TariffsPrice() {
             }`}
           onClick={() => handleTariffSelect(tariffs[0].id)}
         >
-          <div className="flex flex-col pt-4">
-            <h3
-              className="md:text-2xl text-xl text-white font-medium mb-4 "
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              {tariffs[0].period}
-            </h3>
+          <div className="flex sm:justify-evenly justify-between items-center w-full md:p-4">
+            <div className="price-transition-container flex flex-col p-8 md:my-0 my-2">
+              <h3
+                className="md:text-2xl text-xl text-white font-medium"
+                style={{ fontFamily: "var(--font-montserrat)" }}
+              >
+                {tariffs[0].period}
+              </h3>
 
-            <div className="price-transition-container ">
               {!isExpired ? (
                 <>
-                  <div className="flex flex-col mx-4">
+                  <div className="flex flex-col">
                     <span
-                      className={`md:text-5xl text-3xl font-bold text-white ${
+                      className={`md:text-4xl text-2xl font-bold text-white whitespace-nowrap ${
                         isExpired
                           ? ""
                           : selectedTariff === tariffs[0].id
@@ -146,7 +146,7 @@ export default function TariffsPrice() {
                       {tariffs[0].price} ₽
                     </span>
                     <span
-                      className={`text-gray-400 line-through text-lg ml-auto ${
+                      className={`text-gray-400 line-through ml-auto text-lg ${
                         showAnimation ? "price-slide-out" : ""
                       }`}
                       style={{ fontFamily: "var(--font-montserrat)" }}
@@ -157,7 +157,7 @@ export default function TariffsPrice() {
                 </>
               ) : (
                 <span
-                  className={`md:text-5xl text-3xl font-bold ${
+                  className={`md:text-4xl text-2xl font-bold ${
                     selectedTariff === tariffs[0].id ? "warning" : "text-white"
                   } ${showAnimation ? "price-slide-in" : ""}`}
                   style={{ fontFamily: "var(--font-montserrat)" }}
@@ -166,6 +166,12 @@ export default function TariffsPrice() {
                 </span>
               )}
             </div>
+
+            <h5 className="text-gray-400 my-auto md:max-w-[200px] max-w-[120px] mr-3">
+              <span className="hidden md:inline">{tariffs[0].text}</span>
+
+              <span className="md:hidden">Всегда быть в форме</span>
+            </h5>
           </div>
 
           {!isExpired || showAnimation ? (
@@ -180,13 +186,6 @@ export default function TariffsPrice() {
 
           <div className="absolute right-5 top-2 text-orange-300 font-semibold">
             хит!
-          </div>
-
-          <div className="text-gray-400 md:ml-6 my-auto md:flex-1 max-w-[300px]">
-
-            <span className="hidden md:inline">{tariffs[0].text}</span>
-
-            <span className="md:hidden">Всегда быть в форме</span>
           </div>
         </div>
       )}
@@ -207,11 +206,11 @@ export default function TariffsPrice() {
                   isSelected
                     ? "border border-orange-500"
                     : "border border-gray-600"
-                } md:h-[380px]`}
+                }`}
               onClick={() => handleTariffSelect(tariff.id)}
             >
-              <div className="flex justify-evenly w-full md:hidden p-4">
-                <div className="price-transition-container flex flex-col">
+              <div className="flex sm:justify-evenly justify-between w-full md:hidden">
+                <div className="price-transition-container flex flex-col p-4 md:my-0 my-2">
                   <h3
                     className="md:text-2xl text-[18px] text-white font-medium md:mb-4"
                     style={{ fontFamily: "var(--font-montserrat)" }}
@@ -223,7 +222,7 @@ export default function TariffsPrice() {
                     <>
                       <div className="flex flex-col">
                         <span
-                          className={`md:text-4xl text-[34px] font-bold ${
+                          className={`md:text-4xl text-2xl font-bold ${
                             isSelected ? "warning" : "normal"
                           } ${showAnimation ? "price-slide-out" : ""}`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
@@ -252,13 +251,13 @@ export default function TariffsPrice() {
                   )}
                 </div>
 
-                <h5 className="text-gray-400 max-w-[120px] ml-4 my-auto overflow-hidden h-20">
+                <h5 className="text-gray-400 max-w-[120px] my-auto overflow-hidden">
                   <span className="line-clamp-3">{tariff.text}</span>
                 </h5>
               </div>
 
               <div className="hidden md:flex md:flex-col md:items-center md:w-full md:justify-between h-full">
-                <div className="price-transition-container flex flex-col items-center md:mt-18">
+                <div className="price-transition-container flex flex-col items-center md:mt-14">
                   <h3
                     className="md:text-2xl text-xl text-white font-medium md:mb-4"
                     style={{ fontFamily: "var(--font-montserrat)" }}
@@ -270,7 +269,7 @@ export default function TariffsPrice() {
                     <>
                       <div className="flex flex-col items-center">
                         <span
-                          className={`md:text-4xl text-3xl font-bold ${
+                          className={`md:text-4xl text-2xl font-bold ${
                             isSelected ? "warning" : "normal"
                           } ${showAnimation ? "price-slide-out" : ""}`}
                           style={{ fontFamily: "var(--font-montserrat)" }}
@@ -289,7 +288,7 @@ export default function TariffsPrice() {
                     </>
                   ) : (
                     <span
-                      className={`md:text-4xl text-3xl font-bold ${
+                      className={`md:text-4xl text-2xl font-bold ${
                         isSelected ? "warning" : "normal"
                       } ${showAnimation ? "price-slide-in" : ""}`}
                       style={{ fontFamily: "var(--font-montserrat)" }}
@@ -298,14 +297,14 @@ export default function TariffsPrice() {
                     </span>
                   )}
                 </div>
-                <h5 className="text-gray-400 max-w-[150px] overflow-hidden md:mb-6">
+                <h5 className="text-gray-400 max-w-[150px] overflow-hidden md:mb-4 md:mt-10">
                   {tariff.text}
                 </h5>
               </div>
 
               {!isExpired || showAnimation ? (
                 <div
-                  className={`absolute top-0 right-12 md:left-10 md:right-auto bg-red-400 text-md font-bold p-2 text-white rounded-b-lg
+                  className={`absolute top-0 right-8 md:left-10 md:right-auto bg-red-400 text-md font-bold p-2 text-white rounded-b-lg
                             ${
                               isExpired && showAnimation ? "badge-fade-out" : ""
                             }`}

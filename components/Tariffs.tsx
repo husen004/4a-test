@@ -60,7 +60,13 @@ export default function Tariffs() {
         <TariffsPrice />
 
         <div className="tarrif-plan rounded-[20px] flex items-start gap-4 md:mr-auto mx-4 p-3">
-          <Image src={alert1} alt="alert1" />
+          <div className="flex-shrink-0">
+            <Image
+              src={alert1}
+              alt="alert1"
+              style={{ width: "20px", height: "20px" }}
+            />
+          </div>
           <h5 className="max-w-[400px] text-[16px] text-gray-400">
             Следуя плану на 3 месяца и более, люди получают в 2 раза лучший
             результат, чем за 1 месяц

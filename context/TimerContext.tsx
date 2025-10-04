@@ -1,4 +1,3 @@
-// context/TimerContext.tsx
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
@@ -11,7 +10,7 @@ interface TimerContextType {
 const TimerContext = createContext<TimerContextType | null>(null);
 
 export function TimerProvider({ children }: { children: React.ReactNode }) {
-  const [timeLeft, setTimeLeft] = useState(10); // 2 minutes
+  const [timeLeft, setTimeLeft] = useState(120); // 2 minutes
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
